@@ -50,7 +50,7 @@ library(leaflet)
 ```{r}
 # First, let's read in our gender identity dataset
 
-df <- read_csv('../Data/GI_det.csv')
+df <- read_csv('Data/GI_det.csv')
 ```
 
 
@@ -195,13 +195,18 @@ Anyway, let's get started.
 ```{r}
 # Download shapefiles from geoportal 
 
+
 # URL for the direct download of the shapefile
 url <- "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Local_Authority_Districts_May_2022_UK_BFE_V3_2022/FeatureServer/replicafilescache/Local_Authority_Districts_May_2022_UK_BFE_V3_2022_3331011932393166417.zip"
 
-# Destination file path
 
-dest_dir <- "Shapefiles"
+# Get the current working directory
+current_dir <- getwd()
+
+# Construct absolute path
+dest_dir <- file.path(current_dir, "Shapefiles")
 dest_file <- file.path(dest_dir, "shapefile.zip")
+
 
 # Download shapefile 
 
@@ -216,7 +221,7 @@ unzip(dest_file, exdir = dest_dir)
 # Read in shapefile to a simple features object
 # st_read() reads in spatial data to a 'simple features' object
 
-sf_data <- st_read("Shapefiles/LAD_MAY_2022_UK_BFE_V3.shp")
+sf <- st_read("Shapefiles/LAD_MAY_2022_UK_BFE_V3.shp")
 ```
 
 
