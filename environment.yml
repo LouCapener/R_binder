@@ -3,4 +3,4 @@ dependencies:
   - plotly
   - geopandas
   - folium
-  - pytables
+  - pyarrow
